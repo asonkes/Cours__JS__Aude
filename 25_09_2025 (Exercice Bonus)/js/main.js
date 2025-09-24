@@ -1,89 +1,67 @@
 /** On initialise les input */
 let input1 = document.getElementById("input1");
-console.log(input1);
-
 let input2 = document.getElementById("input2");
-console.log(input2);
+let input3 = document.getElementById("input3");
 
 /** On initialise les boutons */
 const btnMore = document.getElementById("btnMore");
-console.log(btnMore);
-
 const btnbefore = document.getElementById("btnBefore");
-console.log(btnbefore);
-
 const btnTime = document.getElementById("btnTime");
-console.log(btnTime);
-
 const btnDivided = document.getElementById("btnDivided");
-console.log(btnDivided);
-
 const btnPercentage = document.getElementById("btnPercentage");
-console.log(btnPercentage);
+const btnReinitialiser = document.getElementById("reinitialiser");
 
 /** On initialise la valeur insérée dans les 2ers input */
 
 /** Le bouton au (+) */
 btnMore.addEventListener("click", () => {
     let input1Value = Number(input1.value);
-    console.log(input1Value);
-
     let input2Value = Number(input2.value);
-    console.log(input2Value);
-
-    let input3 = document.getElementById("input3");
-    console.log(input3);
-
     let input3Value = Number(input1Value + input2Value);
-    console.log(input3Value);
 
-    input3.textContent = input3Value;
+    input3.value = input3Value.toFixed(2);
+    // Bon aussi si je mets input3.placeholder. 
+    // Différence ???
 })
 
 /** Le bouton au (-) */
 btnBefore.addEventListener("click", () => {
     let input1Value = Number(input1.value);
-    console.log(input1Value);
-
     let input2Value = Number(input2.value);
-    console.log(input2Value);
+    let input3Value = Number(input1Value - input2Value);
 
-    let input3 = Number(input1Value - input2Value);
-    console.log(input3);
+    input3.value = input3Value.toFixed(2);
 })
 
 /** Le bouton au (*) */
 btnTime.addEventListener("click", () => {
     let input1Value = Number(input1.value);
-    console.log(input1Value);
-
     let input2Value = Number(input2.value);
-    console.log(input2Value);
-
-    let input3 = Number(input1Value * input2Value);
-    console.log(input3);
+    let input3Value = Number(input1Value * input2Value);
+    
+    input3.value = input3Value.toFixed(2);
 })
 
 /** Le bouton au (/) */
 btnDivided.addEventListener("click", () => {
     let input1Value = Number(input1.value);
-    console.log(input1Value);
-
     let input2Value = Number(input2.value);
-    console.log(input2Value);
-
-    let input3 = Number(input1Value / input2Value);
-    console.log(input3);
+    let input3Value = Number(input1Value / input2Value);
+    
+    input3.value = input3Value.toFixed(2);
 })
 
 /** Le bouton au (%) */
 btnPercentage.addEventListener("click", () => {
     let input1Value = Number(input1.value);
-    console.log(input1Value);
-
     let input2Value = Number(input2.value);
-    console.log(input2Value);
+    let input3Value = Number(input1Value % input2Value);
+    
+    input3.value = input3Value.toFixed(2);
+})
 
-    let input3 = Number(input1Value % input2Value);
-    console.log(input3);
+btnReinitialiser.addEventListener("click", () => {
+    document.getElementById("input1").value = '';
+    document.getElementById("input2").value = '';
+    document.getElementById("input3").value = '';
 })
