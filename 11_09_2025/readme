@@ -1,0 +1,66 @@
+<!-- Petits astuces que je dois retenir, par rapport au cours donné --> 
+<!-- Il existe d'autres formes de types de "console"--> 
+1) console.error("Error brain not found : J'ai faim") ==> message s'affiche en 'rouge'
+2) console.warn("Attention ça glisse"); ==> message affiché en 'jaune'
+3) console.debug("Permet d'afficher une erreur aussi"); ==> mais pas de couleur pour le texte
+
+<!-- PopUp --> 
+<!-- Il y a 3 modèles différents -->
+1) alert("Salut, comment tu vas ?") ==> sert à afficher une information
+2) let ageUtilisateur = prompt("Donnes-moi ton âge !") ==> permet de récupérer des informations
+console.log(ageUtilisateur);
+3) confirm("Vous vous avez appeler bien [nom de la personne]");==> permet d'avoir une confirmation
+
+<!---------------------------------------------------------------------------->
+<!-- Interpollation de chaînes --> 
+1) confirm("Vous vous avez bien " + ageUtilisateur + " ? ");==> permet d'avoir une c
+==> on peut écrire :
+2) confirm(`Vous avez bien ${ageUtilisateur}`);
+
+<!----------------------------------------------------------------------------->
+<!-- Comment faire une incrémentation -->
+1) 
+let ageUtilisateur = prompt("Quel est votre âge ?");
+parseInt(age) ==> la + propre
+
+2) 
+let ageUtilisateur = prompt("Quel est votre âge ?");
+ageUtilisateur = Number(ageUtilisateur) + 1;
+
+3) 
+let ageUtilisateur = prompt("Quel est votre âge ?");
+let age = +age;
+
+4) let ageUtilisateur = prompt("Quel est votre âge ?");
+age++; ==> Ici on convertit une chaîne de caractère en nombre;
+
+<!------------------------------------------------------------------------------->
+<!-- Ecriture distinctes pour "const" et "let -->
+1) Ecriture pour les "let"
+let prixDuProduit = 12; ===> écriture en lowerCamelCase(donc chaque mot, la 1ere lettre majuscule)
+
+2) Ecriture pour les "const"
+const MA_PHOBIE = 'kiwis' (ici, tout en majuscule, avec '_' pour séparer les mots)
+
+
+<!------------------------------------------------------------------------------->
+<!-- Privilégier les simples guillements, pas les doubles -->
+
+<!------------------------------------------------------------------------------->
+<!-- Les types de variables -->
+1) Les valeurs définies
+    a) Nan :
+    ==> C'est considéré comme un nombre mais n'ayant pas de valeur particulière.
+    ==> Donc pour comparer un élément avec 'Nan', on doit utiliser :
+    ==> console.log(isNan());
+    ==> On utilise la fonciton Nan();
+
+    b) Infinity :
+    ==> Peu utilisé
+    ==> console.log(56 / 0) ==> on obtient pas '0' mais 'infinity'
+
+2) Les types avancés :
+    a) Tableaux :
+    ==> Regrouper dans les tableaux des valeurs de même type (ex : tous des chiffres ou des strings,pas mélanger).
+
+!!! Pour savoir le type de variable, on peut mettre "typeof" devant.

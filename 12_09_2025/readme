@@ -1,0 +1,23 @@
+<!-- Choses à retenir de cet exercice -->
+1) innerText OU textContent
+==> <p>Bonjour, comment ça va ?</p>
+==> on verra les balise "p"
+
+==> Donc on met :
+let x = `Bienvenue ${unserName}`
+==> + sécurisé si on utilise des données d'une API !!!
+
+2) innerHtml :
+==> let x = `Bienvenue ${unserName}`
+==> on verra pas les balises
+==> Mais vaut mieux utiliser qaund on contrôles les élements insérés
+
+3) Overflow : hidden (OUblies souvent)
+==> Permet de "supprimer", "chacher" ce qui dépasserait de cet élément...
+
+4) Quand on utilise des "value", pour récupérer la valeur
+==> on récupère TOUJOURS des "strings"
+==> Si on veut récupérer un nombre, on doit mettre ".valueAsNumber"
+==> Et là, on récupère un 'nombre'
+
+5) 

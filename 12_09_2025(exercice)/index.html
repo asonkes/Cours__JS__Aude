@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="JS/main.js" defer></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <form class="container1" id="formulaire">
+        <input type="text" name="firstname" placeholder="nom" id="firstname" />
+        <input type="text" name="lastname" placeholder="prenom" id="lastname" />
+        <input type="number" name="age" placeholder="age" id="age" />
+        <input type="url" name="url" placeholder="url" id="url" />
+
+        <!--  Si bouton à l'intérieur du form, on peut préciser que c'est type="button"-->
+        <button class="button" id="button">Valider</button>
+      </form>
+      <div class="container2">
+        <div class="container2__block1">
+          <button id="darkTheme">Thème Sombre</button>
+          <button id="lightTheme">Thème Clair</button>
+          <button id="customTheme">Thème Personnalisé</button>
+        </div>
+        <div class="container2__block2">
+          <div class="container2__block2--image">
+            <img class="image" id="image" src="" alt="" />
+            <!-- https://charming-angel-5ca83bf286.media.strapiapp.com/Maine_Coon_62b7c10518.webp -->
+          </div>
+          <div class="container2__block2--text">
+            <p class="text" id="text"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

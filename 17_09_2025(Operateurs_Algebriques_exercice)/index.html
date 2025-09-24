@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="JS/main.js" defer></script>
+    <script src="https://kit.fontawesome.com/2cbf82340f.js" crossorigin="anonymous" defer></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="box1">
+      <form id="form">
+        <div class="inputParent">
+          <label for="note">Note :</label>
+          <div class="inputParent__container">
+            <span>€</span>
+            <input type="number" placeholder="0.00" id="note" />
+          </div>
+        </div>
+
+        <div class="inputParent">
+          <label for="pourboire">Pourboire :</label>
+          <div class="inputParent__container">
+            <span>%</span>
+            <input type="number" placeholder="0.00" id="pourboire" />
+          </div>
+        </div>
+
+        <div class="inputParent">
+          <label for="nbPersonne">Nombre de Personnes :</label>
+          <div class="inputParent__container">
+            <span><i class="fa-regular fa-user"></i></span>
+            <input type="number" placeholder="0" id="nbDePersonnes" />
+          </div>
+        </div>
+
+        <button id="calculer">Calculer</button>
+      </form>
+    </div>
+    <div class="box2">
+        <div class="box2__container">
+            <div id="item1">
+                <p>Montant pourboire</p>
+                <span>00.00 €</span>
+            </div>
+            <div id="item2">
+                <p>Montant à payer/personne</p>
+                <span>00.00 €<span>
+            </div>
+            <div id="item3">
+                <p>Montant total</p>
+                <span>0.00 €</span>
+            </div>
+
+            <button id="reinitialiser">Réinitialiser</button>
+            </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+!!! A retenir !!!
+
+1) Si button à l'intérieur du form, mettre type="button"
+2) Si bouton en dehors du form ==> pas de problème.
+3) Au sinon faire comme j'ai fait, ANNULER l'évènement par défaut ==> event.preventDefault()
+
+!!! Pour la diminution du code !!!
+// nom
+let firstname = document.getElementById("firstname").value;
+
+==> Ici pas grave, car 1 action, mais t'avais pas besoin de faire ça (ca que t'avais fait avant était bon);
+===> Comme ça, qd tu dois vider ou faire des condition, pas besoin de mettre :
+ "document.getElementById("firstname").value;"
+
+====> Apprentissage, pas de diminution de code, en tout cas, pas ICI :)
+
+!!! Autre façon de vider les valeurs dans les input !!!
+Ex moi :
+    document.getElementById("firstname").value = '';
+    document.getElementById("lastname").value = '';
+    document.getElementById("age").value = '';
+    document.getElementById("url").value = '';
+
+1) On peut mettre un id sur le form :
+const formulaire = document.getElementById("formulaire").reset();
+==> videra les values des input
+
+2) 
