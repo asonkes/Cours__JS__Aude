@@ -21,7 +21,9 @@ btnMore.addEventListener("click", () => {
 
     input3.value = input3Value.toFixed(2);
     // Bon aussi si je mets input3.placeholder. 
-    // Différence ???
+    // Si on met dans value ==> effectivement, on peut récupérer la "value" de l'input après
+    // On peut aussi mettre "placeholder", mais là, c'est une indication pour l'utilisateur, de ce que devrait contenir l'input.
+    // Et donc si value va dans "placeholder", on ne sait pas la récupérer par la suite.
 })
 
 /** Le bouton au (-) */
