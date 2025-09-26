@@ -89,6 +89,7 @@ button3.addEventListener("click", () => {
             span3.textContent = "café aux noisettes";
         break;
         default:
+        document.getElementById("image3").value = '';
         span3.textContent = "Vous avez tapez le mauvais chiffre ! 😡​ Aucune boisson ne correspond ! Recommencez ​😉​"
     }
 
