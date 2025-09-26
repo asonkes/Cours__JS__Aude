@@ -1,0 +1,128 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+}
+
+body {
+    max-width: 100%;
+    height: 100vh;
+    background-color: #03577c;
+    padding: 30px;
+    border-radius: 50px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    
+
+    .container {
+        max-width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-image: url('../images/background/3ntw_ov1y_201104.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        border-radius: 50px;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        border: 4px solid orange;
+
+        .containerEnfant {
+            width: 70%;
+            height: 80%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .block1 {
+                max-width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                
+                h1 {
+                    font-size: 25px;
+                    color: #ff6d00;
+                    padding: 80px 0 0 0;
+                }
+
+                .block1__text {
+                    max-width: 100%;
+                    padding: 80px 30px 30px 30px;
+
+                    #input1 {
+                        width: 200px;
+                        margin: 0 10px;
+                        padding: 10px;
+                        border: 2px solid #0473b8;
+                        background: #6ebdc3;
+                        color: white;
+                        border-radius: 20px;
+                    }
+
+                    button {
+                        padding: 10px;
+                        margin: 0 10px;
+                        background-color: #0473b8;
+                        border: 2px solid rgba(0, 0, 0, 0.25);
+                        color: white;
+                        cursor: pointer;
+                        border-radius: 10px;
+                    }
+                }
+
+                .block2__text {
+                    max-width: 100%;
+                    margin: 80px 0 0 0;
+                    border-radius: 20px;
+                    border: 2px solid #0473b8;
+
+                    #input2 {
+                        width: 400px;
+                        padding: 10px;
+                        border: none;
+                        background: #6ebdc3;
+                        color: white;
+                        border-radius: 20px;
+                    }
+                }
+
+                .block3__text {
+                    max-width: 100%;
+                    margin: 80px 0 0 0;
+
+                    p {
+                        font-size: 22px;
+                        color: #0473b8;
+
+                        span {
+                            max-width: 100%;
+                            color: red;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/* Permet d'enlever les flêches sur les input */
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+ 
+/* Chrome */
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button { 
+	-webkit-appearance: none;
+	margin:0;
+}
+ 
+/* Opéra*/
+input::-o-inner-spin-button,
+input::-o-outer-spin-button { 
+	-o-appearance: none;
+	margin:0
+}
