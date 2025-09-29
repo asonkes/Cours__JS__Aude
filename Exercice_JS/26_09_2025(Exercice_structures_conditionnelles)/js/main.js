@@ -6,6 +6,7 @@ let resultat = document.querySelector(".block3__text p span");
 const buttonEasy = document.getElementById("buttonEasy");
 const buttonMedium = document.getElementById("buttonMedium");
 const buttonHard = document.getElementById("buttonHard");
+const h1 = document.getElementById("title");
 
 /**********************************/
 /** Ici c'est pour le mode facile */
@@ -89,9 +90,19 @@ buttonMedium.addEventListener("click", () => {
 buttonEasy.disabled = true;
 buttonHard.disabled = true; 
 
+/** On définit le nombre minimum et maximum */
+let minNumber = 1;
+let MaxNumber = 100;
+
 /** Ici cela permet de créer un nombre aléatoire entre 1 et 100 */
-let number = Math.floor(Math.random() * (100 - 1)) + 1;
+let number = Math.floor(Math.random() * (MaxNumber - minNumber)) + minNumber;
 console.log(number);
+
+/** Ici on va changer le nombre du placeholder */
+inputNumber.placeholder = `Insérer un nombre de ${minNumber} à ${MaxNumber}`;
+
+/** On change le nombre dans le titre */
+title.textContent = `Veuillez choisir un chiffre entre ${minNumber} et ${MaxNumber} :`;
 
 /** Ici, on définit que le nombre de tentatives = 3 dés le départ*/
 let tentatives = 10;
@@ -118,7 +129,8 @@ resultat.textContent = ( "".padEnd(tentatives * 2 , '🦐')  );
 
                 input2Text.value = `Le chiffre est au-dessus de : ${input1Value}`;
                 tentatives--;
-                resultat.textContent = ( "".padEnd(tentatives * 2 , '🦐')  );
+                /** On remplace le nombre de tentatives par des emojis */
+                resultat.textContent = ( "".padEnd(tentatives * 2 , '🦐')) + ( "".padEnd((tentatives * 2) - ((tentatives * 2) - 1) , '❌​'));
 
                 /** Si le nombre de tentatives est dépassé (10 max) */
                 if(tentatives === 0) {
@@ -131,8 +143,9 @@ resultat.textContent = ( "".padEnd(tentatives * 2 , '🦐')  );
 
                 input2Text.value = `Le chiffre est en-dessous de : ${input1Value}`;
                 tentatives--;
-                resultat.textContent = ( "".padEnd(tentatives * 2 , '🦐')  );
-
+                /** On remplace le nombre de tentatives par des emojis */
+                resultat.textContent = ( "".padEnd(tentatives * 2 , '🦐')) + ( "".padEnd((tentatives * 2) - ((tentatives * 2) - 1) , '❌​'));
+  
                 /** Si le nombre de tentatives est dépassé (10 max) */
                 if(tentatives === 0) { 
                     input2Text.value = `Désolée vous avez perdu !!! Le nombre de tentatives est dépassé !!! 😥​😥​😥​`;
@@ -160,9 +173,19 @@ buttonHard.addEventListener("click", () => {
 buttonEasy.disabled = true;
 buttonMedium.disabled = true; 
 
+/** On définit le nombre minimum et maximum */
+let minNumber = 1;
+let MaxNumber = 1000;
+
 /** Ici cela permet de créer un nombre aléatoire entre 1 et 1000 */
-let number = Math.floor(Math.random() * (1000 - 1)) + 1;
+let number = Math.floor(Math.random() * (MaxNumber - minNumber)) + minNumber;
 console.log(number);
+
+/** Ici on va changer le nombre du placeholder */
+inputNumber.placeholder = `Insérer un nombre de ${minNumber} à ${MaxNumber}`;
+
+/** On change le nombre dans le titre */
+title.textContent = `Veuillez choisir un chiffre entre ${minNumber} et ${MaxNumber} :`;
 
 /** Ici, on définit que le nombre de tentatives = 3 dés le départ*/
 let tentatives = 15;
@@ -189,6 +212,7 @@ resultat.textContent = ( "".padEnd(tentatives * 2 , '🦐')  );
 
                 input2Text.value = `Le chiffre est au-dessus de : ${input1Value}`;
                 tentatives--;
+                /** On remplace le nombre de tentatives par des emojis */
                 resultat.textContent = ( "".padEnd(tentatives * 2 , '🦐')  );
 
                 /** Si le nombre de tentatives est dépassé (15 max) */
@@ -202,6 +226,7 @@ resultat.textContent = ( "".padEnd(tentatives * 2 , '🦐')  );
 
                 input2Text.value = `Le chiffre est en-dessous de : ${input1Value}`;
                 tentatives--;
+                /** On remplace le nombre de tentatives par des emojis */
                 resultat.textContent = ( "".padEnd(tentatives * 2 , '🦐')  );
 
                 /** Si le nombre de tentatives est dépassé (3 max) */
