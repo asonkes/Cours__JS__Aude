@@ -1,22 +1,9 @@
-// Il faut proposer un chiffre aléatoire entre 1 et 10
 
-// Vérifier si le nombre est valide entre 1 et 10 (NaN) ===> on enlève pas une tentative
+let tentatives = 5;
+// padEnd rajoute le caractère donné en deuxième paramètre à la fin de la chaine sur laquelle on utilisé padEnd autant de fois que nécessaire pour atteindre la taille précisée en premier paramètre
+console.log( "--".padEnd(tentatives, '*')  );
+console.log( "".padEnd(tentatives, '💲')  ); /* Un émoji prend la place de 2 caractères */
+console.log( "".padEnd(tentatives * 2 , '💲')  );
 
-// 4 sortes de texte
-1) C'est plus que [x]
-2) C'est moins que [x]
-3) Gagné c'est bien
-4) Perdu / loser
-
-
-// Si on a le temps
-1) Facile de 1 à 10 avec 3tentatives
-2) Moyen de 1 à 100 avec 10tentatives
-3) Difficile de 1 à 1000 avec 15 tentatives
-
-// Explication pour mettre un chiffre aléatoire :
-console.log(math.ra)
-
-
-
-console.log(Math.floor(Math.radom() * 10 +1 ))
+console.log( "--".padStart(tentatives, '*') );
+console.log( "------".padStart(tentatives, '*'));
