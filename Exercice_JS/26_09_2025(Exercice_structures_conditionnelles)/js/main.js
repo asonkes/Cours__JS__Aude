@@ -8,21 +8,33 @@ const buttonMedium = document.getElementById("buttonMedium");
 const buttonHard = document.getElementById("buttonHard");
 const h1 = document.getElementById("title");
 
+let minNumber;
+let maxNumber;
+let tentatives;
+let maxTentatives;
+
 /**********************************/
 /** Ici c'est pour le mode facile */
 /**********************************/
 buttonEasy.addEventListener("click", () => {
 
 /** On rend les autres boutons disabled */
+buttonEasy.disabled = true;
 buttonMedium.disabled = true;
-buttonHard.disabled = true; 
+buttonHard.disabled = true;
+
+/** On définit le nombre minimum et maximum */
+minNumber = 1;
+maxNumber = 10;
 
 /** Ici cela permet de créer un nombre aléatoire entre 1 et 10 */
-let number =  Math.floor(Math.random() * 10) + 1;
+let number =  Math.floor(Math.random() * maxNumber) + minNumber;
 console.log(number);
 
 /** Ici, on définit que le nombre de tentatives = 3 dés le départ*/
-let tentatives = 3;
+tentatives = 3;
+maxTentatives = 3;
+
 /** On remplace le nombre de tentatives par des emojis */
 resultat.textContent = ( "".padEnd(tentatives * 2 , '🦐')  );
 
@@ -34,7 +46,7 @@ resultat.textContent = ( "".padEnd(tentatives * 2 , '🦐')  );
         console.log(input1Value);
 
         /** Si pas un nombre, on prévient, que c'est pas un nombre */
-        if(!isNaN(input1Value)) {
+        if(!isNaN(input1Value) && input1Value >= minNumber && input1Value <= maxNumber) {
 
             /** Si c'est un nombre */
             /** Si le nombre donné par le joueur === au nombre donné aléatoirement */
@@ -48,7 +60,7 @@ resultat.textContent = ( "".padEnd(tentatives * 2 , '🦐')  );
                 input2Text.value = `Le chiffre est au-dessus de : ${input1Value}`;
                 tentatives--;
                 /*resultat.textContent = tentatives;*/
-                resultat.textContent = ( "".padEnd(tentatives * 2 , '🦐')  );
+                resultat.textContent = "".padEnd(tentatives * 2, "🦐").padEnd(maxTentatives * 2, "🍴");
 
                 /** Si le nombre de tentatives est dépassé (3 max) */
                 if(tentatives === 0) {
@@ -62,7 +74,7 @@ resultat.textContent = ( "".padEnd(tentatives * 2 , '🦐')  );
                 input2Text.value = `Le chiffre est en-dessous de : ${input1Value}`;
                 tentatives--;
                 /*resultat.textContent = tentatives;*/
-                resultat.textContent = ( "".padEnd(tentatives * 2 , '🦐')  );
+                resultat.textContent = "".padEnd(tentatives * 2, "🦐").padEnd(maxTentatives * 2, "🍴");
 
                 /** Si le nombre de tentatives est dépassé (3 max) */
                 if(tentatives === 0) { 
@@ -88,24 +100,27 @@ buttonMedium.addEventListener("click", () => {
 
 /** On rend les autres boutons disabled */
 buttonEasy.disabled = true;
+buttonMedium.disabled = true;
 buttonHard.disabled = true; 
 
 /** On définit le nombre minimum et maximum */
-let minNumber = 1;
-let MaxNumber = 100;
+minNumber = 1;
+maxNumber = 100;
 
 /** Ici cela permet de créer un nombre aléatoire entre 1 et 100 */
-let number = Math.floor(Math.random() * (MaxNumber - minNumber)) + minNumber;
+let number = Math.floor(Math.random() * (maxNumber - minNumber)) + minNumber;
 console.log(number);
 
 /** Ici on va changer le nombre du placeholder */
-inputNumber.placeholder = `Insérer un nombre de ${minNumber} à ${MaxNumber}`;
+inputNumber.placeholder = `Insérer un nombre de ${minNumber} à ${maxNumber}`;
 
 /** On change le nombre dans le titre */
-title.textContent = `Veuillez choisir un chiffre entre ${minNumber} et ${MaxNumber} :`;
+title.textContent = `Veuillez choisir un chiffre entre ${minNumber} et ${maxNumber} :`;
 
 /** Ici, on définit que le nombre de tentatives = 3 dés le départ*/
-let tentatives = 10;
+tentatives = 10;
+maxTentatives = 10;
+
 resultat.textContent = ( "".padEnd(tentatives * 2 , '🦐')  );
 
     /** Evenement au click */
@@ -116,7 +131,7 @@ resultat.textContent = ( "".padEnd(tentatives * 2 , '🦐')  );
         console.log(input1Value);
 
         /** Si pas un nombre, on prévient, que c'est pas un nombre */
-        if(!isNaN(input1Value)) {
+        if(!isNaN(input1Value) && input1Value >= minNumber && input1Value <= maxNumber) {
 
             /** Si c'est un nombre */
             /** Si le nombre donné par le joueur === au nombre donné aléatoirement */
@@ -130,7 +145,7 @@ resultat.textContent = ( "".padEnd(tentatives * 2 , '🦐')  );
                 input2Text.value = `Le chiffre est au-dessus de : ${input1Value}`;
                 tentatives--;
                 /** On remplace le nombre de tentatives par des emojis */
-                resultat.textContent = ( "".padEnd(tentatives * 2 , '🦐')) + ( "".padEnd((tentatives * 2) - ((tentatives * 2) - 1) , '❌​'));
+                resultat.textContent = "".padEnd(tentatives * 2, "🦐").padEnd(maxTentatives * 2, "🍴");
 
                 /** Si le nombre de tentatives est dépassé (10 max) */
                 if(tentatives === 0) {
@@ -144,7 +159,7 @@ resultat.textContent = ( "".padEnd(tentatives * 2 , '🦐')  );
                 input2Text.value = `Le chiffre est en-dessous de : ${input1Value}`;
                 tentatives--;
                 /** On remplace le nombre de tentatives par des emojis */
-                resultat.textContent = ( "".padEnd(tentatives * 2 , '🦐')) + ( "".padEnd((tentatives * 2) - ((tentatives * 2) - 1) , '❌​'));
+                resultat.textContent = "".padEnd(tentatives * 2, "🦐").padEnd(maxTentatives * 2, "🍴");
   
                 /** Si le nombre de tentatives est dépassé (10 max) */
                 if(tentatives === 0) { 
@@ -172,23 +187,26 @@ buttonHard.addEventListener("click", () => {
 /** On rend les autres boutons disabled */
 buttonEasy.disabled = true;
 buttonMedium.disabled = true; 
+buttonHard.disabled = true; 
 
 /** On définit le nombre minimum et maximum */
-let minNumber = 1;
-let MaxNumber = 1000;
+minNumber = 1;
+maxNumber = 1000;
 
 /** Ici cela permet de créer un nombre aléatoire entre 1 et 1000 */
-let number = Math.floor(Math.random() * (MaxNumber - minNumber)) + minNumber;
+let number = Math.floor(Math.random() * (maxNumber - minNumber)) + minNumber;
 console.log(number);
 
 /** Ici on va changer le nombre du placeholder */
-inputNumber.placeholder = `Insérer un nombre de ${minNumber} à ${MaxNumber}`;
+inputNumber.placeholder = `Insérer un nombre de ${minNumber} à ${maxNumber}`;
 
 /** On change le nombre dans le titre */
-title.textContent = `Veuillez choisir un chiffre entre ${minNumber} et ${MaxNumber} :`;
+title.textContent = `Veuillez choisir un chiffre entre ${minNumber} et ${maxNumber} :`;
 
 /** Ici, on définit que le nombre de tentatives = 3 dés le départ*/
-let tentatives = 15;
+tentatives = 15;
+maxTentatives = 15;
+
 resultat.textContent = ( "".padEnd(tentatives * 2 , '🦐')  );
 
     /** Evenement au click */
@@ -199,7 +217,7 @@ resultat.textContent = ( "".padEnd(tentatives * 2 , '🦐')  );
         console.log(input1Value);
 
         /** Si pas un nombre, on prévient, que c'est pas un nombre */
-        if(!isNaN(input1Value)) {
+        if(!isNaN(input1Value) && input1Value >= minNumber && input1Value <= maxNumber) {
 
             /** Si c'est un nombre */
             /** Si le nombre donné par le joueur === au nombre donné aléatoirement */
@@ -213,7 +231,7 @@ resultat.textContent = ( "".padEnd(tentatives * 2 , '🦐')  );
                 input2Text.value = `Le chiffre est au-dessus de : ${input1Value}`;
                 tentatives--;
                 /** On remplace le nombre de tentatives par des emojis */
-                resultat.textContent = ( "".padEnd(tentatives * 2 , '🦐')  );
+                resultat.textContent = "".padEnd(tentatives * 2, "🦐").padEnd(maxTentatives * 2, "🍴");
 
                 /** Si le nombre de tentatives est dépassé (15 max) */
                 if(tentatives === 0) {
@@ -227,7 +245,7 @@ resultat.textContent = ( "".padEnd(tentatives * 2 , '🦐')  );
                 input2Text.value = `Le chiffre est en-dessous de : ${input1Value}`;
                 tentatives--;
                 /** On remplace le nombre de tentatives par des emojis */
-                resultat.textContent = ( "".padEnd(tentatives * 2 , '🦐')  );
+                resultat.textContent = "".padEnd(tentatives * 2, "🦐").padEnd(maxTentatives * 2, "🍴");
 
                 /** Si le nombre de tentatives est dépassé (3 max) */
                 if(tentatives === 0) { 
