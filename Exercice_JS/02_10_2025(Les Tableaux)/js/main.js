@@ -4,7 +4,6 @@ const form = document.getElementById("form");
 let prenoms = [];
 let prenom = document.getElementById("prenom");
 const button1 = document.getElementById("button1");
-let textInfos = document.querySelector(".textInfos");
 
 const button2 = document.getElementById("button2");
 let textIndex = document.getElementById("textIndex");
@@ -21,8 +20,13 @@ button1.addEventListener("click", (event) => {
 
     if(prenomValue !== "") {
         writeTab();
+
+        let textInfos = document.querySelector(".textInfos");
+        if(textInfos !== "") {
+            textInfos.remove();
+        }
     } else {
-        writeError();
+        let textInfos = writeError();
     }
 
     document.getElementById("prenom").value = "";
@@ -37,11 +41,10 @@ button1.addEventListener("keyup", (event) => {
     event.preventDefault();
 
     if(prenomValue !== "") {
-        console.log(textInfos);
         writeTab();
     } else {
+        let textInfos = writeError();
         console.log(textInfos);
-        writeError();
     }
 
     document.getElementById("prenom").value = "";
@@ -100,6 +103,8 @@ function writeError() {
     console.log(textInfos.textContent);
     /** On ajoute le contenu */
     form.appendChild(textInfos);
+
+    return textInfos;
 }
 
 function random() {
@@ -113,6 +118,3 @@ function random() {
 
     return number;
 }
-
-
-// Pour supprimer un élément du DOm ==> remove.
