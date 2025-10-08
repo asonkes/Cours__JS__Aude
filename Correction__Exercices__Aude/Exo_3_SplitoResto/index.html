@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Split'o Resto</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barriecito&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./global.css">
+    <script defer src="./main.js"></script>
+</head>
+
+<body>
+    <div class="app">
+
+        <h1>Split'o Resto</h1>
+        <div class="container">
+            <div class="left">
+                <form name="splitForm" id="form">
+                    <div>
+                        <label for="note">Note</label>
+                        <input id="note" type="number" placeholder="142.25">
+                        <span>€</span>
+                    </div>
+
+                    <div>
+                        <label for="pourcent">Pourboire</label>
+                        <input id="pourcent" type="number" placeholder="5">
+                        <span>%</span>
+                    </div>
+
+                    <div>
+                        <label for="nbPers">Nombre de personnes</label>
+                        <input id="nbPers" type="number" placeholder="4">
+                        <span>👩🏻‍👩🏼‍👧🏻</span>
+                    </div>
+                </form>
+                <button id="valider" class="btn">Valider</button>
+            </div>
+
+            <div class="right">
+                <div class="amounts">
+                    <div class="amount">
+                        <p>
+                            <span>Montant pourboire</span>
+                        </p>
+                        <p id="mtn-pourboire">0.00 €</p>
+                    </div>
+
+                    <div class="amount">
+                        <p>
+                            <span>Montant total</span>
+                        </p>
+                        <p id="mtn-total">0.00 €</p>
+                    </div>
+
+                    <div class="amount">
+                        <p>
+                            <span>Montant à payer</span>
+                            <span>/ personne</span>
+                        </p>
+                        <p id="mtn-par-pers">0.00 €</p>
+                    </div>
+                </div>
+                <button id="reset" class="btn">Réinitialiser</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
