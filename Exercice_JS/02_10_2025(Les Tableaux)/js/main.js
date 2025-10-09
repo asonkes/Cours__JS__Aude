@@ -8,7 +8,7 @@ const button1 = document.getElementById("button1");
 const button2 = document.getElementById("button2");
 let textIndex = document.getElementById("textIndex");
 let minNumber;
-let maxNumber; 
+let maxNumber;
 
 button1.addEventListener("click", (event) => {
     /** On enlève le rechargement automatique de la page */
@@ -18,15 +18,15 @@ button1.addEventListener("click", (event) => {
     /** trim() permet d'enlever les espaces */
     let prenomValue = prenom.value.trim();
 
-    if(prenomValue !== "") {
+    if (prenomValue !== "") {
         writeTab();
 
-        let textInfos = document.querySelector(".textInfos");
-        if(textInfos !== "") {
-            textInfos.remove();
-        }
+        // On récupère au cas où où, on a plusieurs erreurs, donc tableau
+        // Et c'est dans le cas où si on met qq'chose de juste, il faut qd même enlever l'erreur
+        let textInfos = document.querySelectorAll(".textInfos");
+        textInfos.forEach((info) => { info.remove() })
     } else {
-        let textInfos = writeError();
+        writeError();
     }
 
     document.getElementById("prenom").value = "";
@@ -40,11 +40,15 @@ button1.addEventListener("keyup", (event) => {
     /** On enlève le rechargement automatique de la page */
     event.preventDefault();
 
-    if(prenomValue !== "") {
+    if (prenomValue !== "") {
         writeTab();
+
+        // On récupère au cas où où, on a plusieurs erreurs, donc tableau
+        // Et c'est dans le cas où si on met qq'chose de juste, il faut qd même enlever l'erreur
+        let textInfos = document.querySelectorAll(".textInfos");
+        textInfos.forEach((info) => { info.remove() })
     } else {
-        let textInfos = writeError();
-        console.log(textInfos);
+        writeError();
     }
 
     document.getElementById("prenom").value = "";
@@ -56,6 +60,11 @@ button1.addEventListener("keyup", (event) => {
 button2.addEventListener("click", (event) => {
     /** ON enlève le rechargement automatique de la page */
     event.preventDefault();
+    if (prenoms.length === 0) {
+        textTableau.textContent = `Il n'y a plus de prénoms dans le tableau`;
+        button2.disabled = true;
+        return;
+    }
 
     // C'est un return donc il faut réaffecter le number à une variable
     // On doit pas mettre number en paramètre, car tu n'as besoin d'aucune données pour calculer le random
@@ -71,14 +80,7 @@ button2.addEventListener("click", (event) => {
     /** En console.log(résultat juste), on touche plus au splice() */
     console.log(prenoms);
 
-    let array = prenoms;
-
-    textTableau.textContent = array.join(" | ");
-
-    if(array.length === 0) {
-        textTableau.textContent = `Il n'y a plus de prénoms dans le tableau`;
-        button2.disabled = true;
-    }
+    textTableau.textContent = prenoms.join(" | ");
 })
 
 //////////////////////////////////////////////////
@@ -94,8 +96,13 @@ function writeTab() {
 }
 
 function writeError() {
+    // Ca permet de vider l'erreur s'il y en a une d'abord d'abord
+    // Ce n'est pas une vaeur ==> objet
+    let textInfosToDelete = document.querySelectorAll(".textInfos");
+    textInfosToDelete.forEach((info) => { info.remove() })
+
     /** On va recréer un élément pour préciser que l'input est vide */
-    let textInfos = document.createElement("p"); 
+    let textInfos = document.createElement("p");
     /** On lui ajoute une classe */
     textInfos.classList.add("textInfos");
     /** On insère le texte */
@@ -103,8 +110,6 @@ function writeError() {
     console.log(textInfos.textContent);
     /** On ajoute le contenu */
     form.appendChild(textInfos);
-
-    return textInfos;
 }
 
 function random() {
