@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap"
+      rel="stylesheet" />
+
+    <script src="./js/main.js" defer></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="image"></div>
+    <div class="jeu">
+      <h1>Le jeu du PENDU, vous êtes prêt ???</h1>
+      <div class="text">
+        <div id="mot"></div>
+        <!-- Permet de limiter à 1 caractère car on entre 1 lettre à la fois -->
+        <input type="text" placeholder="Entrez les lettres du mot" maxlength="1" />
+        <button>Jouer</button>
+        <div class="infos">
+          <h2>Historique des parties :</h2>
+          <p>Parties gagnées :</p>
+          <p>Parties perdues :</p>
+        </div>
+        <button>Rejouer</button>
+      </div>
+    </div>
+  </body>
+</html>
