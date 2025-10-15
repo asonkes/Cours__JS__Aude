@@ -52,22 +52,29 @@ function playGame() {
     if(isNaN(inputValue) && inputValue !== '') {
         console.log("ok, tu as rentré une lettre");
 
-        /** Ici j'ai récupéré le mot que je dois trouvé */
+        /** Ici j'ai récupéré le mot que je dois trouver */
         console.log([motFind]);
+
+        /** Effectivement transformer mon mot en tableau avec un split  */
+        // Ex : let motFindArray = motFind.split(""); // ["t", "i", "g", "r", "e"]
+        // Vérifier si c'est ca qu'il donne
+        // et faire un 2eme tableau et c'est dans celui-là qu'on modifie le code :
+        // let motAffiche = Array(motFindArray.length).fill("_"); // ["_", "_", "_", "_", "_"]
+
+
 
         /*
         for(let i=0; i < motFind.length; i++) {
             motFind[i];
-            //console.log(motFind[i]);
+            console.log(motFind[i]);
 
-            
             if(inputValue === motFind[i]) {
                 
                 console.log("il y a une lettre qui correspond");
 
                 let textSpan = document.querySelector("#mot span");
-                textSpan.textContent = `${motFind[i]}`;
-
+                //textSpan.textContent = `${motFind[i]}`;
+                textSpan.spli = `${motFind[i]}`;
             }
         }*/
     } else {
