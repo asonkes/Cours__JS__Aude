@@ -102,7 +102,7 @@ function createTab() {
       /** A cause de ca, il supprime des éléments qui ont pas le bon index */  
       tab.splice(i, 1);
 
-      /** Ici refaire le tableau car là, il a les bons indes et il le recréé */
+      /** Ici refaire le tableau car là, il a les bons index et il le recréé */
       createTab();
     })
 
