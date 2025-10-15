@@ -1,0 +1,22 @@
+.desc {
+    font-weight: bold;
+    color : darkorange;
+}
+
+table {
+    border-collapse: collapse;
+
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 0.5rem 1rem;
+}
+
+#contacts img {
+    width: 3rem;
+}
+
+.favorite {
+    color : tomato;
+}
