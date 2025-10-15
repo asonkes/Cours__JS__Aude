@@ -9,13 +9,10 @@ const input = document.querySelector(".text input");
 const button = document.querySelector(".text button");
 
 /** On initialise le nbr min et max, même sans valeur */
-let nbrMin = 0;
-let nbrMax = tab.length;
-let nbrMinNew = 2;
-let nbrMaxNew = 6;
+let nbrMin;
+let nbrMax;
 
-const randomNumber = generateRandomNumber(nbrMin, nbrMax);
-const randomNumberNew = generateRandomNumber(nbrMinNew, nbrMaxNew);
+const randomNumber = generateRandomNumber();
 const motFind = generateHiddenWord();
 
 /** On fait ici l'évènement au click */
@@ -64,9 +61,11 @@ function playGame() {
     /** On récupère le mot à trouver et on le convertit en tableau */
     const tabMot = motFind.split("");
     console.log(tabMot);
+    console.log(tabMot.length);
 
     /** On remplace le tableau par des caractères "_" */
-    const tabMotCache = tabMot.fill("_");
+    /** Pas utiliser "fill" car remplace le tableau d'origine */
+    const tabMotCache = Array(tabMot.length).fill("_");
     console.log(tabMotCache);
 
     for(let i=0; i < tabMot.length; i++) {
@@ -75,10 +74,6 @@ function playGame() {
             
             console.log("il y a une lettre qui correspond");
 
-
-            //let textSpan = document.querySelector("#mot span");
-            //textSpan.textContent = `${tabMot[i]}`;
-            //textSpan.spli = `${motFind[i]}`;
         }
     }
        
@@ -89,11 +84,11 @@ function playGame() {
 /////////////////////////////
 /** Création des fonctions */
 /////////////////////////////
-function generateRandomNumber(nbrMin, nbrMax) {
+function generateRandomNumber() {
 
     /** on doit initialiser le nombre minimum et maximum */
-    // nbrMin = 0;
-    // nbrMax = tab.length;
+    nbrMin = 0;
+    nbrMax = tab.length;
 
     /** Création du mot aléatoire */
     let random = Math.floor(Math.random() * (nbrMax - nbrMin + 1)) + nbrMin;
