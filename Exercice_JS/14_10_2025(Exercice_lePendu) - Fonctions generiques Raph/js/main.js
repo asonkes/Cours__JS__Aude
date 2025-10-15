@@ -8,14 +8,13 @@ const input = document.querySelector(".text input");
 /** On initialise la variable du bouton "jouer" */
 const button = document.querySelector(".text button");
 
-/** On initialise le nbr min et max, même sans valeur */
+/** On initialise le nbr min et max */
+/** On déclare les valeurs ici, pour pouvoir rendre la fonction générique */
 let nbrMin = 0;
 let nbrMax = tab.length;
-let nbrMinNew = 2;
-let nbrMaxNew = 6;
 
+/** On a mis "nbrMin" et "nbrMax" en arguments */
 const randomNumber = generateRandomNumber(nbrMin, nbrMax);
-const randomNumberNew = generateRandomNumber(nbrMinNew, nbrMaxNew);
 const motFind = generateHiddenWord();
 
 /** On fait ici l'évènement au click */
@@ -90,11 +89,6 @@ function playGame() {
 /** Création des fonctions */
 /////////////////////////////
 function generateRandomNumber(nbrMin, nbrMax) {
-
-    /** on doit initialiser le nombre minimum et maximum */
-    // nbrMin = 0;
-    // nbrMax = tab.length;
-
     /** Création du mot aléatoire */
     let random = Math.floor(Math.random() * (nbrMax - nbrMin + 1)) + nbrMin;
     console.log("nombre aléatoire :", random);
