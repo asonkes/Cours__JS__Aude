@@ -1,0 +1,182 @@
+* {
+    margin : 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins";
+}
+
+:root {
+    --main : #b0c195;
+    --main-light : #e6ebdc;
+}
+
+body {
+    /* Berk IA 💩 mais je trouvais pas ce que je voulais */
+    background-image: url("./bg-shopping.png");
+    background-size: cover;
+    /* background-color: var(--main-light); */
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+    overflow: hidden;
+}
+
+.shopping {
+    z-index: 10;
+    width: 20%;
+    height: 85%;
+    box-shadow: rgba(56, 60, 57, 0.369) 0px 7px 29px 0px;
+    border-radius: 1rem;
+    background-color: var(--main);
+
+    @media screen and (max-width : 640px) {
+        width: 80%;
+        height: 90%;
+    }
+
+    .shopping-header {
+        height: 20%;
+        position: relative;
+        padding: 1rem;
+
+        @media screen and (max-width : 640px) {
+            height: 15%;
+        }
+
+        h1 {
+            font-size: 1.15rem;
+            text-transform: uppercase;
+            font-weight: bolder;
+            color : whitesmoke;
+        }
+
+        img {
+            width: 45%;
+            position: absolute;
+            bottom: -25%;
+            right: 5%;
+            z-index: 10;
+        }
+    }
+
+    .shopping-content {
+        position: relative;
+        height: 80%;
+        background-color: whitesmoke;
+        border-radius: 1rem;
+        z-index: 100;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap : 1.5rem;
+
+
+        @media screen and (max-width : 640px) {
+            height: 85%;
+        }
+
+
+        .shopping-add {
+            height: 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90%;
+            position: relative;
+
+            input {
+                width: 65%;
+                height: 2rem;
+                background-color: whitesmoke;
+                border-radius: 0.5rem;
+                border : 1px solid var(--main);
+                padding: 0 0.5rem;
+                &:focus {
+                    outline: none;
+                    outline : 2px solid var(--main);
+                }
+            }
+            span {
+                position: absolute;
+                font-size: 0.8rem;
+                bottom: -1rem;
+                color : tomato;
+            }
+            button {
+                width: 30%;
+                height: 2rem;
+                background-color: var(--main);
+                border-radius: 0.5rem;
+                border : none;
+                font-weight: bold;
+                cursor: pointer;
+
+                &:hover {
+                    filter : brightness(95%);
+                }
+
+            }
+        }
+        .shopping-list {
+            width: 90%;
+            height: 80%;
+            overflow-y: scroll;
+            scrollbar-width: none;
+            scrollbar-color: var(--main) whitesmoke; 
+
+            
+            ul {
+                width: 100%;
+                height: 100%;
+                list-style: none;
+                display: flex;
+                flex-direction: column;
+                gap : 0.75rem;
+              
+
+                li {
+
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 0.5rem;
+                    border-radius: 0.5rem;
+                    background-color: var(--main-light);
+                    order : 1;
+
+                    /* La première lettre des span dans les li */
+                    span::first-letter {
+                        text-transform: uppercase;
+                    }
+
+                    button {
+                        padding: 0.5rem 1rem;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        height: 2rem;
+                        background-color: var(--main);
+                        border-radius: 0.5rem;
+                        border : none;
+                        font-weight: bold;
+                        cursor: pointer;
+
+                        &:hover {
+                            filter : brightness(95%);
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}
+
+

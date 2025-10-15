@@ -1,16 +1,16 @@
 Logique :
 
-1. Si lettre trouvée, elle doit s'afficher
+// A voir pour mon for qui foncitonne ==> tableau rempli donc remplacer par un forEach
 
-//Il faut faire un forEach sur toutes les lettres
-// If (inputValue === "une des lettres du mot") {
-    afficher la lettre
-}
+1. lettre à afficher ==> ok
 
-2. Décider un nombre de chances
-3. Si nombre de chances dépassée, perdu
+2. Je dois aussi pouvoir voir les autres "\_"
 
+3. Si lettre à déjà été proposé, on peut plus la mettre
 
-
+4. Décider un nombre de chances
+5. Si nombre de chances dépassée, perdu
 
 ??? Question à Aude, un mot avec 2 lettres "p" ???
+
+!!! Raph, poser question ce soir... ==> tu utilises pas bcq le "for" ==> symfo, on faisait tt le temps ??? DUBITATIVE !!!

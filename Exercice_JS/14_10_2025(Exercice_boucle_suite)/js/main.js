@@ -13,7 +13,7 @@ let nbrMin;
 let nbrMax;
 
 const randomNumber = generateRandomNumber();
-generateHiddenWord();
+const motFind = generateHiddenWord();
 
 /** On fait ici l'évènement au click */
 button.addEventListener("click", (event) => {
@@ -22,11 +22,18 @@ button.addEventListener("click", (event) => {
     playGame();
 })
 
-    /** On fait ici l'évènement au clavier */
+/** On fait ici l'évènement au clavier */
+/** Question Aude, ça pose problème pour le click alors ??? */
+ 
 input.addEventListener("keyup", (event) => {
     event.preventDefault();
 
-    playGame();
+    /** Ici on vérifie grace à ça, que lorsqu'on clique sur "enter", l'évènement se déclenche */
+    /** Au sinon, c'est lorsqu'on clique sur la touche directement et ça, ca pose problème */
+    if(event.key == 'Enter'){
+        playGame();
+    }
+
 })
 
 function playGame() {
@@ -43,11 +50,23 @@ function playGame() {
     console.log(inputValue);
 
     if(isNaN(inputValue) && inputValue !== '') {
-        console.log("ok, tu as rentré une lettre");
+        
+        /** Ici j'ai récupéré le mot que je dois trouvé */
+        console.log(motFind);
+
+        for(let i=0; i < motFind.length; i++) {
+
+            if(inputValue === motFind[i]) {
+                
+                console.log("il y a une lettre qui correspond");
+
+                let textSpan = document.querySelector("#mot span");
+                textSpan.textContent = `${motFind[i]}`;
+            }
+        }
     } else {
         errorText();
     }
-
     document.querySelector(".text input").value = "";
 }
 
@@ -91,6 +110,8 @@ function generateHiddenWord() {
 
     /** Ici, on utilise "append" et pas "appendchild" car on va créer plusieurs éléments */
     mot.append(text, span);
+
+    return motText;
 }
 
 function errorText() {
