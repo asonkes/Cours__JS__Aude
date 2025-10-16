@@ -1,6 +1,7 @@
 /** On va initialiser les variables dont on a besoin */
 /** Le tableau des mots */
 const tab = ["lion", "tigre", "elephant", "ane", "chevreuil", "blaireau"];
+const mot = document.getElementById("mot");
 
 /** On doit initialiser la variable de l'input */
 const input = document.querySelector(".text input");
@@ -15,7 +16,7 @@ let nbrMax = tab.length;
 
 /** On a mis "nbrMin" et "nbrMax" en arguments */
 const randomNumber = generateRandomNumber(nbrMin, nbrMax);
-const motFind = generateHiddenWord();
+const motFind = generateHiddenWord(tab, randomNumber, mot);
 
 /** On fait ici l'évènement au click */
 button.addEventListener("click", (event) => {
@@ -96,14 +97,14 @@ function generateRandomNumber(nbrMin, nbrMax) {
     return random;
 }
 
-function generateHiddenWord() {
+function generateHiddenWord(table, number, element) {
 
     /** On doit afficher le mot de la liste selon le nombre aléatoire */
-    let motText = tab[randomNumber];
+    let motText = table[number];
     console.log("le mot est :", motText);
 
     /** On initialise l'élément dans lequel on va afficher le texte */
-    const mot = document.getElementById("mot");
+    // const mot = document.getElementById("mot");
 
     // On va créer les éléments enfants
     const text = document.createElement("p");
@@ -118,7 +119,7 @@ function generateHiddenWord() {
     }
 
     /** Ici, on utilise "append" et pas "appendchild" car on va créer plusieurs éléments */
-    mot.append(text, span);
+    element.append(text, span);
 
     return motText;
 }
