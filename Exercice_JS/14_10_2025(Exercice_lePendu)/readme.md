@@ -1,16 +1,15 @@
 Logique :
 
-// A voir pour mon for qui foncitonne ==> tableau rempli donc remplacer par un forEach
-
 1. lettre à afficher ==> ok
 
-2. Je dois aussi pouvoir voir les autres "\_"
+2. Je dois aussi pouvoir voir les autres "\_" ==> ok
 
-3. Si lettre à déjà été proposé, on peut plus la mettre
+3. Pouvour enlever les "," à l'affichage
 
-4. Décider un nombre de chances
-5. Si nombre de chances dépassée, perdu
+4. Si lettre à déjà été proposé, on peut plus la mettre
 
-??? Question à Aude, un mot avec 2 lettres "p" ???
+5. Décider un nombre de chances ==> ok
 
-!!! Raph, poser question ce soir... ==> tu utilises pas bcq le "for" ==> symfo, on faisait tt le temps ??? DUBITATIVE !!!
+6. Si nombre de chances dépassée, perdu ==> ok
+
+7. Mais comme dans le for ==> se fait sur toutes les lettres pas bon...

@@ -12,6 +12,9 @@ const button = document.querySelector(".text button");
 let nbrMin;
 let nbrMax;
 
+/** On définit le nombre de tentatives accordées */
+let tentatives = 5;
+
 const randomNumber = generateRandomNumber();
 const motFind = generateHiddenWord();
 
@@ -61,11 +64,10 @@ function playGame() {
     /** On récupère le mot à trouver et on le convertit en tableau */
     const tabMot = motFind.split("");
     console.log(tabMot);
-    console.log(tabMot.length);
 
     /** On remplace le tableau par des caractères "_" */
     /** Pas utiliser "fill" car remplace le tableau d'origine */
-    const tabMotCache = Array(tabMot.length).fill("_");
+    const tabMotCache = Array(tabMot.length).fill(" _ ");
     console.log(tabMotCache);
 
     for(let i=0; i < tabMot.length; i++) {
@@ -73,9 +75,24 @@ function playGame() {
         if(inputValue === tabMot[i]) {
             
             console.log("il y a une lettre qui correspond");
+            tabMotCache.splice(i, 1, inputValue);
 
+            console.log(tabMotCache);
+        } else {
+            
+            console.log("Vous avez fait une erreur");
+            tentatives--;
+            console.log(tentatives);
+
+            if(tentatives === 0) {
+                console.log("Vous avez perdu !!! Désolée");
+            }
         }
+
+        spanText.textContent = `${tabMotCache}`;
     }
+
+    
        
     document.querySelector(".text input").value = "";
 }
