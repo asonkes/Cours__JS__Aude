@@ -18,6 +18,16 @@ let tentatives = 5;
 const randomNumber = generateRandomNumber();
 const motFind = generateHiddenWord();
 
+/**On doit sortir les tableaux de la fonction "playGame(), au sinon à chaque appel de la fonction, il refait la même chose avec un tableau de nouveau rien qu'avec des "_" */
+/** On récupère le mot à trouver et on le convertit en tableau */
+const tabMot = motFind.split("");
+console.log(tabMot);
+
+/** On remplace le tableau par des caractères "_" */
+/** Pas utiliser "fill" car remplace le tableau d'origine */
+const tabMotCache = Array(tabMot.length).fill(" _ ");
+console.log(tabMotCache);
+
 /** On fait ici l'évènement au click */
 button.addEventListener("click", (event) => {
     event.preventDefault();
@@ -61,15 +71,6 @@ function playGame() {
     /** On récupère le span présent dans mon html */
     const spanText = document.querySelector("#mot span");
 
-    /** On récupère le mot à trouver et on le convertit en tableau */
-    const tabMot = motFind.split("");
-    console.log(tabMot);
-
-    /** On remplace le tableau par des caractères "_" */
-    /** Pas utiliser "fill" car remplace le tableau d'origine */
-    const tabMotCache = Array(tabMot.length).fill(" _ ");
-    console.log(tabMotCache);
-
     for(let i=0; i < tabMot.length; i++) {
 
         if(inputValue === tabMot[i]) {
@@ -78,22 +79,13 @@ function playGame() {
             tabMotCache.splice(i, 1, inputValue);
 
             console.log(tabMotCache);
-        } else {
-            
-            console.log("Vous avez fait une erreur");
-            tentatives--;
-            console.log(tentatives);
 
-            if(tentatives === 0) {
-                console.log("Vous avez perdu !!! Désolée");
-            }
+            /** Pour demain, ici pourrait mettre (if... i == tabMot.length ==> tu as gagné et rendre l'input désactivé) */
         }
 
-        spanText.textContent = `${tabMotCache}`;
+        spanText.textContent = tabMotCache.join(" ");
     }
 
-    
-       
     document.querySelector(".text input").value = "";
 }
 
