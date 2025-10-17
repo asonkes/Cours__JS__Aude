@@ -6,7 +6,7 @@ const tab = ["lion", "tigre", "elephant", "ane", "chevreuil", "blaireau"];
 const input = document.querySelector(".text input");
 
 /** On initialise la variable du bouton "jouer" */
-const button = document.querySelector(".text button");
+const button = document.getElementById("button1");
 
 /** On initialise le nbr min et max, même sans valeur */
 let nbrMin;
@@ -14,6 +14,9 @@ let nbrMax;
 
 /** On définit le nombre de tentatives accordées */
 let tentatives = 5;
+
+/** On définit un compteur pour le nombre de parties perdues ou gagnées */
+let count = 0;
 
 const randomNumber = generateRandomNumber();
 const motFind = generateHiddenWord();
@@ -46,7 +49,6 @@ input.addEventListener("keyup", (event) => {
     if(event.key == 'Enter'){
         playGame();
     }
-
 })
 
 function playGame() {
@@ -71,24 +73,59 @@ function playGame() {
     /** On récupère le span présent dans mon html */
     const spanText = document.querySelector("#mot span");
 
+    /** On définit à la base que la lettre proposée est fausse */
+    let lettreProposee = false;
+     
     for(let i=0; i < tabMot.length; i++) {
 
         if(inputValue === tabMot[i]) {
-            
-            console.log("il y a une lettre qui correspond");
+            lettreProposee = true;
+
             tabMotCache.splice(i, 1, inputValue);
 
             console.log(tabMotCache);
 
             /** Pour demain, ici pourrait mettre (if... i == tabMot.length ==> tu as gagné et rendre l'input désactivé) */
+            /*
+            if(tabMot.length === tabMot.length) {
+                console.log("Vous avez trouvé tous les mots");
+                
+            }*/
         }
-
         spanText.textContent = tabMotCache.join(" ");
     }
 
+        /** Ici on va diminuer le nombre de tentative */
+        if(lettreProposee === false) {
+            console.log("La lettre ne fait pas partie du mot");
+            tentatives--;
+            console.log("Le nombre de tentatives est de : ", tentatives);
+        }
+
+        /** Si les tentatives sont épuisées, on perd */
+        if(tentatives === 0) {
+            /** On désactive l'input */
+            input.disabled = true;
+            button.disabled = true;
+
+            /** On affiche le texte, comme quoi la partie est perdue */
+            generateTextIfWinOrLostGame();
+
+            count++;
+            console.log("Nombre de tentatives perdues :", count);
+
+            /** On va afficher le nombre de tentatives perdues */
+            const textCount = document.querySelector("#text2 .span1");
+
+            const span2 = document.createElement("span");
+            span2.classList.add("span2");
+            span2.textContent = ` ${count} `;
+
+            textCount.insertAdjacentElement('afterend',span2);
+        }
+
     document.querySelector(".text input").value = "";
 }
-
 
 /////////////////////////////
 /** Création des fonctions */
@@ -144,6 +181,16 @@ function errorText() {
     const errorElement = document.createElement("p");
     errorElement.classList.add('error');
     errorElement.textContent = `* Vous vous êtes trompé, insérez un MOT !!!`;
+
     /** Ici on insère l'élément après l'input */
     input.insertAdjacentElement('afterend', errorElement);
+}
+
+function generateTextIfWinOrLostGame() {
+
+    /** On va générer le texte si on a perdu ou gagner la partie */
+    const winYesNo = document.createElement("p");
+    winYesNo.classList.add("winYesNo");   
+    winYesNo.textContent = `Désolée, vous avez perdu, nous sommes désolée 🥹​🥹​🥹​ !!!`;
+    button.insertAdjacentElement('afterend', winYesNo);
 }

@@ -1,7 +1,7 @@
 Logique :
 
+1. Peut-être afficher le nombre de parties au début (tout est = 0)
+
 1. Si lettre à déjà été proposé, on peut plus la mettre
 
-2. Décider un nombre de chances 
-
-3. Si nombre de chances dépassée, perdu 
+1. Si gagné, augmenter le nombre de parties gagnées
