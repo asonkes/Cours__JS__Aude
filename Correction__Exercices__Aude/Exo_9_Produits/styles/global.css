@@ -1,0 +1,141 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    /* background-color: rgb(255, 243, 192); */
+    display: flex;
+    flex-direction: column;
+    gap : 8rem;
+    justify-content: center;
+    align-items: center;
+
+    font-family: "Coming Soon", cursive;
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap : 1rem;
+
+    h1 {
+        font-family: "Rubik Bubbles", system-ui;
+        color : tomato;
+    }
+}
+
+.cards {
+    width: 80%;
+    display: flex;
+    gap : 4rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.card {
+    position: relative;
+    width: 22%;
+    aspect-ratio: 3/4;
+    background-color: tomato;
+    border-radius: 1rem;
+    cursor: pointer;
+
+    padding: 1rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    transition: all 300ms ease-in-out;
+
+    &:hover {
+        transform: scale(115%);
+        background-color: rgb(252, 188, 38);
+    }
+
+    .pastille {
+        position: absolute;
+        top : -1.5rem;
+        right: -1.5rem;
+
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+        width: 5rem;
+        aspect-ratio: 1/1;
+        border-radius: 50%;
+
+        background-color: rgb(255, 221, 0);
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        font-size: 2rem;
+        font-weight: bold;
+        color : white;
+    }
+
+    .top-card, bot-card {
+        height: 50%;
+        width: 100%;
+    }
+
+    .top-card {
+        position: relative;
+        img {
+            position: absolute;
+            width: 40%;
+            bottom: 1.5rem;
+            left : calc(50% - 20%);
+           
+        }
+
+        .shadow {
+            position: absolute;
+            bottom: 1.5rem;
+            left: 0;
+            transform: translateX(50%);
+            width: 50%;
+            height: 1px;
+            box-shadow:0px 10px 8px rgba(0, 0, 0, 0.883);
+        }
+    }
+
+    .bot-card {
+        color : #fff3f1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap : 1rem;
+        text-align: center;
+
+        h3 {
+            font-size: 1.4rem;
+            font-weight: bold;
+        }
+
+        .desc {
+            font-size : 0.95rem;
+        }
+
+        .price {
+            position: relative;
+            font-size: 1.4rem;
+            font-weight: 900;
+
+            .promo {
+                position: absolute;
+                right : 0;
+                bottom: 50%;
+                font-size: 0.9rem;
+                font-weight: 500;
+                transform: translate(150%, 50%);
+
+                text-decoration: line-through;
+            }
+        }
+
+    }
+}
