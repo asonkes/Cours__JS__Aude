@@ -81,14 +81,26 @@ body {
 
       button,
       #mot {
-        margin: 40px;
+        margin: 40px 40px 20px 40px;
+      }
+
+      .winYesNo {
+        color: #d30404;
+        margin: 30px;
       }
 
       .infos {
 
-        p {
+        #text1, #text2 {
           padding: 10px 0;
-          text-decoration: underline;
+
+          .span1, .span1 {
+            text-decoration: underline;
+          }
+
+          .span2, .span2 {
+            color: white;
+          }
         }
       }
     }

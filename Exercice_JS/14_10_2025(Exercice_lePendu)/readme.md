@@ -2,6 +2,4 @@ Logique :
 
 1. Si lettre à déjà été proposé, on peut plus la mettre
 
-2. Décider un nombre de chances 
-
-3. Si nombre de chances dépassée, perdu 
+2. Si gagné, augmenter le nombre de parties gagnées

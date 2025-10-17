@@ -211,4 +211,8 @@ function countParty() {
   const textCount = document.querySelector("#text2 .span2");
   count++;
   textCount.textContent = `${count}`;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 44d6743dedff20aa68be97a50ff4167a298dabe1
