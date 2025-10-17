@@ -1,6 +1,8 @@
 /** On va initialiser les variables dont on a besoin */
 /** Le tableau des mots */
 const tab = ["lion", "tigre", "elephant", "ane", "chevreuil", "blaireau"];
+
+/** On initialise l'élément dans lequel on va afficher le texte */
 const mot = document.getElementById("mot");
 
 /** On doit initialiser la variable de l'input */
@@ -9,14 +11,33 @@ const input = document.querySelector(".text input");
 /** On initialise la variable du bouton "jouer" */
 const button = document.querySelector(".text button");
 
+/** Ici on va initialiser la variable pour le bouton "reinitialiser" */
+const button2 = document.getElementById("button2");
+
 /** On initialise le nbr min et max */
 /** On déclare les valeurs ici, pour pouvoir rendre la fonction générique */
 let nbrMin = 0;
 let nbrMax = tab.length;
 
+/** On définit le nombre de tentatives accordées */
+let tentatives = 5;
+
+/** On définit un compteur pour le nombre de parties perdues ou gagnées */
+let count = 0;
+
 /** On a mis "nbrMin" et "nbrMax" en arguments */
 const randomNumber = generateRandomNumber(nbrMin, nbrMax);
 const motFind = generateHiddenWord(tab, randomNumber, mot);
+
+/**On doit sortir les tableaux de la fonction "playGame(), au sinon à chaque appel de la fonction, il refait la même chose avec un tableau de nouveau rien qu'avec des "_" */
+/** On récupère le mot à trouver et on le convertit en tableau */
+const tabMot = motFind.split("");
+console.log(tabMot);
+
+/** On remplace le tableau par des caractères "_" */
+/** Pas utiliser "fill" car remplace le tableau d'origine */
+const tabMotCache = Array(tabMot.length).fill(" _ ");
+console.log(tabMotCache);
 
 /** On fait ici l'évènement au click */
 button.addEventListener("click", (event) => {
@@ -36,55 +57,96 @@ input.addEventListener("keyup", (event) => {
     if(event.key == 'Enter'){
         playGame();
     }
-
 })
 
+button2.addEventListener("click", () => {
+  /** On réactive l'input et le bouton pour relancer une nouvelle partie */
+  input.disabled = false;
+  button.disabled = false;
+
+  /** On va initialiser le message quand la partie est perdue */
+  const winYesNo = document.querySelector(".winYesNo");
+
+  /** On supprime le message d'erreur avec remove */
+  winYesNo.remove();
+
+  /** On va supprimer du coup le titre et le le tableau */
+  const text = document.querySelector("#mot p");
+  const span = document.querySelector("#mot span");
+
+  text.remove();
+  span.remove();
+
+  // Du coup ici cela permet de réafficher le titre  et le span
+  generateRandomNumber();
+  generateHiddenWord();
+});
+
 function playGame() {
-    /** Ici cela permet que s'il y eu une erreur avant */
-    /** Qd on tape une lettre, l'erreur disparaisse */
-    const error = document.querySelector(".error");
-    if(error) {
-        error.remove();
+  /** Ici cela permet que s'il y eu une erreur avant */
+  /** Qd on tape une lettre, l'erreur disparaisse */
+  const error = document.querySelector(".error");
+  if (error) {
+    error.remove();
+  }
+
+  /** On doit initialiser la valeur de l'input */
+  /** On enleve les espaces devant et derrière le mot */
+  const inputValue = input.value.trim().toLowerCase();
+  console.log(inputValue);
+
+  // On vérifie que la valeur entrée dans l'input soit valide
+  if (!isNaN(inputValue) || inputValue === "") {
+    errorText();
+  }
+
+  /** On récupère le span présent dans mon html */
+  const spanText = document.querySelector("#mot span");
+
+  /** On définit à la base que la lettre proposée est fausse */
+  let lettreProposee = false;
+
+  for (let i = 0; i < tabMot.length; i++) {
+    if (inputValue === tabMot[i]) {
+      lettreProposee = true;
+
+      tabMotCache.splice(i, 1, inputValue);
+
+      console.log(tabMotCache);
+
+      /** !!! Ici a complété ===> dans le cas où le mot est complété !!!!!!!!!!!!!!!!!!!!!!!! */
+      /*
+      if (tabMot.length === tabMot.length) {
+        console.log("Vous avez trouvé tous les mots");
+      }*/
     }
 
-    /** On doit initialiser la valeur de l'input */
-    /** On enleve les espaces devant et derrière le mot */
-    const inputValue = input.value.trim().toLowerCase();
-    console.log(inputValue);
+    spanText.textContent = tabMotCache.join(" ");
+  }
 
+  /** Ici on va diminuer le nombre de tentative */
+  if (lettreProposee === false) {
+    console.log("La lettre ne fait pas partie du mot");
+    tentatives--;
+    console.log("Le nombre de tentatives est de : ", tentatives);
+  }
 
-    // On vérifie que la valeur entrée dans l'input soit valide
-    if(!isNaN(inputValue) || inputValue === '') {
-         errorText();
-    }
+  /** Si les tentatives sont épuisées, on perd */
+  if (tentatives === 0) {
+    /** On désactive l'input et le bouton pour que l'utilisateur ne puisse plus jouer */
+    input.disabled = true;
+    button.disabled = true;
 
-    /** On récupère le span présent dans mon html */
-    const spanText = document.querySelector("#mot span");
+    /** On affiche le texte, comme quoi la partie est perdue */
+    generateTextIfWinOrLostGame();
+    console.log("Nombre de tentatives perdues :", count);
 
-    /** On récupère le mot à trouver et on le convertit en tableau */
-    const tabMot = motFind.split("");
-    console.log(tabMot);
+    countParty();
+    count++;
+  }
 
-    /** On remplace le tableau par des caractères "_" */
-    const tabMotCache = tabMot.fill("_");
-    console.log(tabMotCache);
-
-    for(let i=0; i < tabMot.length; i++) {
-
-        if(inputValue === tabMot[i]) {
-            
-            console.log("il y a une lettre qui correspond");
-
-
-            //let textSpan = document.querySelector("#mot span");
-            //textSpan.textContent = `${tabMot[i]}`;
-            //textSpan.spli = `${motFind[i]}`;
-        }
-    }
-       
-    document.querySelector(".text input").value = "";
+  document.querySelector(".text input").value = "";
 }
-
 
 /////////////////////////////
 /** Création des fonctions */
@@ -102,9 +164,6 @@ function generateHiddenWord(table, number, element) {
     /** On doit afficher le mot de la liste selon le nombre aléatoire */
     let motText = table[number];
     console.log("le mot est :", motText);
-
-    /** On initialise l'élément dans lequel on va afficher le texte */
-    // const mot = document.getElementById("mot");
 
     // On va créer les éléments enfants
     const text = document.createElement("p");
@@ -137,4 +196,19 @@ function errorText() {
     errorElement.textContent = `* Vous vous êtes trompé, insérez un MOT !!!`;
     /** Ici on insère l'élément après l'input */
     input.insertAdjacentElement('afterend', errorElement);
+}
+
+function generateTextIfWinOrLostGame() {
+  /** On va générer le texte si on a perdu ou gagner la partie */
+  const winYesNo = document.createElement("p");
+  winYesNo.classList.add("winYesNo");
+  winYesNo.textContent = `Désolée, vous avez perdu, nous sommes désolée 🥹​🥹​🥹​ !!!`;
+  button.insertAdjacentElement("afterend", winYesNo);
+}
+
+function countParty() {
+  /** On va afficher le nombre de tentatives perdues */
+  const textCount = document.querySelector("#text2 .span2");
+  count++;
+  textCount.textContent = `${count}`;
 }
