@@ -2,7 +2,7 @@
 /** Le tableau des mots */
 const tab = ["lion", "tigre", "elephant", "ane", "chevreuil", "blaireau"];
 
-/** On doit initialiser la variable de l'input */
+/** Les éléments du DOM */
 const input = document.querySelector(".text input");
 
 /** On initialise la variable du bouton "jouer" */
@@ -21,17 +21,19 @@ let tentatives = 5;
 /** On définit un compteur pour le nombre de parties perdues ou gagnées */
 let count = 0;
 
-const randomNumber = generateRandomNumber();
-const motFind = generateHiddenWord();
+let randomNumber = generateRandomNumber();
+let motFind = generateHiddenWord();
 
 /**On doit sortir les tableaux de la fonction "playGame(), au sinon à chaque appel de la fonction, il refait la même chose avec un tableau de nouveau rien qu'avec des "_" */
 /** On récupère le mot à trouver et on le convertit en tableau */
-const tabMot = motFind.split("");
+/** Ici comme réappelle le tableau pour la réinitialisation ==> mettre let, pas const */
+let tabMot = motFind.split("");
 console.log(tabMot);
 
 /** On remplace le tableau par des caractères "_" */
 /** Pas utiliser "fill" car remplace le tableau d'origine */
-const tabMotCache = Array(tabMot.length).fill(" _ ");
+/** Ici comme réappelle le tableau pour la réinitialisation ==> mettre let, pas const */
+let tabMotCache = Array(tabMot.length).fill(" _ ");
 console.log(tabMotCache);
 
 /** On fait ici l'évènement au click */
@@ -62,7 +64,9 @@ button2.addEventListener("click", () => {
   const winYesNo = document.querySelector(".winYesNo");
 
   /** On supprime le message d'erreur avec remove */
-  winYesNo.remove();
+  if(winYesNo) {
+    winYesNo.remove();
+  }
 
   /** On va supprimer du coup le titre et le le tableau */
   const text = document.querySelector("#mot p");
@@ -72,8 +76,8 @@ button2.addEventListener("click", () => {
   span.remove();
 
   // Du coup ici cela permet de réafficher le titre  et le span
-  generateRandomNumber();
-  generateHiddenWord();
+  randomNumber = generateRandomNumber();
+  motFind = generateHiddenWord();
 });
 
 function playGame() {
@@ -151,7 +155,7 @@ function generateRandomNumber() {
   nbrMax = tab.length;
 
   /** Création du mot aléatoire */
-  let random = Math.floor(Math.random() * (nbrMax - nbrMin + 1)) + nbrMin;
+  let random = Math.floor(Math.random() * (nbrMax - nbrMin)) + nbrMin;
   console.log("nombre aléatoire :", random);
 
   return random;
