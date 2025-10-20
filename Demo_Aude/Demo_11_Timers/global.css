@@ -1,0 +1,145 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.welcome { 
+    position: absolute;
+    height: 100vh;
+
+    height: 100%;
+    width: 100%;
+    
+    background-color: white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .rainbow-segment {
+        background-color: gray;
+        width: 2rem;
+        height: 10rem;
+        transform: translateX(-6rem);
+        
+        /* nom animation */
+        animation-name: rainbow;
+        /* durée de l'animation */
+        animation-duration: 2s;
+        /* courbe d'animation (ex : plus rapide au début et ralenti */
+        animation-timing-function: linear; 
+        /* temps après lequel l'animation se lance */
+        animation-delay: 0s;
+        /* répétition de l'animation */
+        animation-iteration-count: infinite;
+        /* comment l'animation est jouée 
+        reverse : 100% -> 0%
+        alertane : 0% -> 100% - 100% -> 0% */
+        animation-direction: alternate;
+        /* comment mon élément mon reste après l'animation */
+        /* n'est pas utile si vos animation est infinite */
+        /* forwards : l'animation reste dans son état final */
+        animation-fill-mode: forwards;
+        
+        /* Ou version raccourcie */
+        animation: rainbow 3s linear 0s infinite alternate ;
+    }
+
+}
+
+.home {
+    flex-grow: 1;
+
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 0;
+
+   
+}
+
+.hidden {
+    animation: fade-out 500ms linear 0s forwards;
+}
+
+.show {
+    animation: fade-in 1s linear 0s forwards;
+}
+
+/* À utiliser quand notre animation aura plusieurs étapes */
+@keyframes rainbow {
+   0% {
+    background-color: darkviolet;
+    height: 10rem;
+    transform: translateX(-6rem);
+   }
+
+   17% {
+    background-color: blue;
+    height: 9rem;
+    transform: translateX(-4rem);
+   }
+
+   32% {
+    background-color: turquoise;
+    height: 8rem;
+    transform : translateX(-2rem)
+   }
+
+   50% {
+    background-color: green;
+    height: 7rem;
+    transform : translateX(0)
+   }
+
+   67% {
+    background-color: yellow;
+     height: 8rem;
+    transform : translateX(2rem)
+   }
+
+   82% {
+    background-color: orange;
+     height: 9rem;
+    transform : translateX(4rem)
+   }
+   
+   100% {
+    background-color: red;
+    height: 10rem;
+    transform : translateX(6rem)
+   }
+}
+
+/* À utiliser pour une animation qui a un état de début et de fin uniquement (par ex: faire apparaitre un élément) */
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* ou disparaitre un élément */
+@keyframes fade-out {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
