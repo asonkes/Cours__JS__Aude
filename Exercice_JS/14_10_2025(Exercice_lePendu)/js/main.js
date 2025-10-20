@@ -21,6 +21,8 @@ let tentatives = 5;
 /** On définit un compteur pour le nombre de parties perdues ou gagnées */
 let count = 0;
 
+let compteur = 0;
+
 let randomNumber = generateRandomNumber();
 let motFind = generateHiddenWord();
 
@@ -64,7 +66,7 @@ button2.addEventListener("click", () => {
   const winYesNo = document.querySelector(".winYesNo");
 
   /** On supprime le message d'erreur avec remove */
-  if(winYesNo) {
+  if (winYesNo) {
     winYesNo.remove();
   }
 
@@ -96,6 +98,14 @@ function playGame() {
   // On vérifie que la valeur entrée dans l'input soit valide
   if (!isNaN(inputValue) || inputValue === "") {
     errorText();
+
+    /** Ici il faut remettre le code pour vider l'input car avec le return
+     * Ne va pas plus bas !!! */
+    document.querySelector(".text input").value = "";
+
+    /** Il faut mettre le return au sinon, il continue à lire la suite du code */
+    /** Et donc il enlève une tentative */
+    return;
   }
 
   /** On récupère le span présent dans mon html */
@@ -107,16 +117,8 @@ function playGame() {
   for (let i = 0; i < tabMot.length; i++) {
     if (inputValue === tabMot[i]) {
       lettreProposee = true;
-
       tabMotCache.splice(i, 1, inputValue);
-
       console.log(tabMotCache);
-
-      /** !!! Ici a complété ===> dans le cas où le mot est complété !!!!!!!!!!!!!!!!!!!!!!!! */
-      /*
-      if (tabMot.length === tabMot.length) {
-        console.log("Vous avez trouvé tous les mots");
-      }*/
     }
 
     spanText.textContent = tabMotCache.join(" ");
@@ -127,6 +129,21 @@ function playGame() {
     console.log("La lettre ne fait pas partie du mot");
     tentatives--;
     console.log("Le nombre de tentatives est de : ", tentatives);
+  }
+
+  /** Ici on va voir quand est-ce que le mot est trouvé */
+  if (lettreProposee === true) {
+    compteur++;
+    console.log("Le compteur des lettres trouvées est de : ", compteur);
+    console.log("Vous avez trouvé une lettre, bravo !!!");
+
+    if (compteur === tabMot.length) {
+      console.log("vous avez gagné bravo :) !!!");
+
+      /** On désactive l'input et le bouton pour que l'utilisateur ne puisse plus jouer puisqu'il a gagné */
+      input.disabled = true;
+      button.disabled = true;
+    }
   }
 
   /** Si les tentatives sont épuisées, on perd */
@@ -207,6 +224,14 @@ function generateTextIfWinOrLostGame() {
   const winYesNo = document.createElement("p");
   winYesNo.classList.add("winYesNo");
   winYesNo.textContent = `Désolée, vous avez perdu, nous sommes désolée 🥹​🥹​🥹​ !!!`;
+  button.insertAdjacentElement("afterend", winYesNo);
+}
+
+function generateTextWinGame() {
+  /** On va générer le texte si on a perdu ou gagner la partie */
+  const winYesNo = document.createElement("p");
+  winYesNo.classList.add("winYesNo");
+  winYesNo.textContent = `Bravo, vous avez gagné la partie 🥹​🥹​🥹​ !!!`;
   button.insertAdjacentElement("afterend", winYesNo);
 }
 
