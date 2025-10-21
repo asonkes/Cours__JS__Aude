@@ -1,9 +1,5 @@
 Logique :
 
-1. Si gagné, afficher le mot, vous avez gagné bravo !!!
+1. Si lettre à déjà été proposé, on peut plus la mettre
 
-2. Si gagné augmenter le nombre de tentatives !!!
-
-3. Si lettre à déjà été proposé, on peut plus la mettre
-
-BONUS : Afficher le nombre de tentatives qui diminue
+2. Pour le calcul des lettres : si 2 même lettres dans un mot, il compte 1 au lieu de 2 (donc fonctionne pas)

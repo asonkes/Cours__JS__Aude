@@ -129,10 +129,13 @@ function playGame() {
     console.log("La lettre ne fait pas partie du mot");
     tentatives--;
     console.log("Le nombre de tentatives est de : ", tentatives);
+
+    let spanH2 = document.querySelector("h2 #span2");
+    spanH2.textContent = `${tentatives} tentatives.`;
   }
 
   /** Ici on va voir quand est-ce que le mot est trouvé */
-  if (lettreProposee === true) {
+  if (lettreProposee) {
     compteur++;
     console.log("Le compteur des lettres trouvées est de : ", compteur);
     console.log("Vous avez trouvé une lettre, bravo !!!");
@@ -143,6 +146,13 @@ function playGame() {
       /** On désactive l'input et le bouton pour que l'utilisateur ne puisse plus jouer puisqu'il a gagné */
       input.disabled = true;
       button.disabled = true;
+
+      /** On affiche le texte, comme quoi la partie est gagnée */
+      generateTextWinGame();
+      console.log("Nombre de tentatives gagnées :", count);
+
+      countWinParty();
+      count++;
     }
   }
 
@@ -153,10 +163,10 @@ function playGame() {
     button.disabled = true;
 
     /** On affiche le texte, comme quoi la partie est perdue */
-    generateTextIfWinOrLostGame();
+    generateTextLostGame();
     console.log("Nombre de tentatives perdues :", count);
 
-    countParty();
+    countLostParty();
     count++;
   }
 
@@ -219,7 +229,7 @@ function errorText() {
   input.insertAdjacentElement("afterend", errorElement);
 }
 
-function generateTextIfWinOrLostGame() {
+function generateTextLostGame() {
   /** On va générer le texte si on a perdu ou gagner la partie */
   const winYesNo = document.createElement("p");
   winYesNo.classList.add("winYesNo");
@@ -231,13 +241,20 @@ function generateTextWinGame() {
   /** On va générer le texte si on a perdu ou gagner la partie */
   const winYesNo = document.createElement("p");
   winYesNo.classList.add("winYesNo");
-  winYesNo.textContent = `Bravo, vous avez gagné la partie 🥹​🥹​🥹​ !!!`;
+  winYesNo.textContent = `Bravo, vous avez gagné la partie 🥳​🥳​🥳​​ !!!`;
   button.insertAdjacentElement("afterend", winYesNo);
 }
 
-function countParty() {
+function countLostParty() {
   /** On va afficher le nombre de tentatives perdues */
   const textCount = document.querySelector("#text2 .span2");
+  count++;
+  textCount.textContent = `${count}`;
+}
+
+function countWinParty() {
+  /** On va afficher le nombre de tentatives perdues */
+  const textCount = document.querySelector("#text1 .span2");
   count++;
   textCount.textContent = `${count}`;
 }
