@@ -21,7 +21,11 @@ let tentatives = 5;
 /** On définit un compteur pour le nombre de parties perdues ou gagnées */
 let count = 0;
 
+/** Il permet de voir le nombre de fois que la lettre a été trouvé */
 let compteur = 0;
+
+/** Permet de voir le nombre de lettre trouvées */
+let nbrLettresTrouvées = 0;
 
 let randomNumber = generateRandomNumber();
 let motFind = generateHiddenWord();
@@ -119,6 +123,7 @@ function playGame() {
       lettreProposee = true;
       tabMotCache.splice(i, 1, inputValue);
       console.log(tabMotCache);
+      nbrLettresTrouvées++;
     }
 
     spanText.textContent = tabMotCache.join(" ");
@@ -136,7 +141,7 @@ function playGame() {
 
   /** Ici on va voir quand est-ce que le mot est trouvé */
   if (lettreProposee) {
-    compteur++;
+    compteur = nbrLettresTrouvées;
     console.log("Le compteur des lettres trouvées est de : ", compteur);
     console.log("Vous avez trouvé une lettre, bravo !!!");
 
