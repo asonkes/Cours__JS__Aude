@@ -27,6 +27,9 @@ let compteur = 0;
 /** Permet de voir le nombre de lettre trouvées */
 let nbrLettresTrouvées = 0;
 
+// On vérifie si la lettre a déjà été proposée
+let lettresProposees = [];
+
 let randomNumber = generateRandomNumber();
 let motFind = generateHiddenWord();
 
@@ -117,6 +120,16 @@ function playGame() {
 
   /** On définit à la base que la lettre proposée est fausse */
   let lettreProposee = false;
+
+  if (lettresProposees.includes(inputValue)) {
+    const errorLettre = document.createElement("p");
+    errorLettre.classList.add("error");
+    errorLettre.textContent = `Vous avez déjà proposé la lettre "${inputValue}" !`;
+    input.insertAdjacentElement("afterend", errorLettre);
+    return;
+  } else {
+    lettresProposees.push(inputValue);
+  }
 
   for (let i = 0; i < tabMot.length; i++) {
     if (inputValue === tabMot[i]) {
